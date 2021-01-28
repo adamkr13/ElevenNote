@@ -14,3 +14,9 @@ C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Services\obj\Debug\E
 C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Services\obj\Debug\ElevenNote.Services.csproj.CopyComplete
 C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Services\obj\Debug\ElevenNote.Services.dll
 C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Services\obj\Debug\ElevenNote.Services.pdb
+C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Services\bin\Debug\ElevenNote.Data.dll
+C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Services\bin\Debug\ElevenNote.Models.dll
+C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Services\bin\Debug\ElevenNote.Data.pdb
+C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Services\bin\Debug\ElevenNote.Data.dll.config
+C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Services\bin\Debug\ElevenNote.Models.pdb
+C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Services\bin\Debug\ElevenNote.Models.dll.config
