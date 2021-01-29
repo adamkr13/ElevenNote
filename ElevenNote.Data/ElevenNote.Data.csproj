@@ -80,12 +80,22 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202101292200543_AddedCategory.cs" />
+    <Compile Include="Migrations\202101292200543_AddedCategory.designer.cs">
+      <DependentUpon>202101292200543_AddedCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202101292200543_AddedCategory.resx">
+      <DependentUpon>202101292200543_AddedCategory.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
