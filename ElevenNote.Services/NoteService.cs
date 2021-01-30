@@ -25,12 +25,13 @@ namespace ElevenNote.Services
                     OwnerId = _userId,
                     Title = model.Title,
                     Content = model.Content,
+                    CategoryId = (int)model.CategoryId,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Notes.Add(entity);
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() > 0;
             }
         }
         public IEnumerable<NoteListItem> GetNotes()
@@ -41,6 +42,26 @@ namespace ElevenNote.Services
                     ctx
                         .Notes
                         .Where(e => e.OwnerId == _userId)
+                        .Select(
+                            e =>
+                                new NoteListItem
+                                {
+                                    NoteId = e.NoteId,
+                                    CategoryId = e.CategoryId,
+                                    Title = e.Title,
+                                    CreatedUtc = e.CreatedUtc
+                                });
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<NoteListItem> GetNotesByCategory(int categoryId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Notes
+                        .Where(e => e.OwnerId == _userId && e.CategoryId == categoryId)
                         .Select(
                             e =>
                                 new NoteListItem
@@ -66,6 +87,7 @@ namespace ElevenNote.Services
                         NoteId = entity.NoteId,
                         Title = entity.Title,
                         Content = entity.Content,
+                        CategoryName = entity.Category.CategoryName,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
                     };
@@ -83,9 +105,10 @@ namespace ElevenNote.Services
 
                 entity.Title = model.Title;
                 entity.Content = model.Content;
+                entity.CategoryId = (int)model.CategoryId;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() > 0;
             }
         }
         
@@ -100,5 +123,6 @@ namespace ElevenNote.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        
     }
 }
