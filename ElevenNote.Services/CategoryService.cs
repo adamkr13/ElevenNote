@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ElevenNote.Services
 {
-    class CategoryService
+    public class CategoryService
     {
         private readonly Guid _userId;
 
@@ -48,7 +48,32 @@ namespace ElevenNote.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Categories.Single(e => e.CategoryId == id);
-                return new CategoryDetail { CategoryId = entity.CategoryId, CategoryName = entity.CategoryName };
+                return new CategoryDetail { CategoryId = entity.CategoryId, CategoryName = entity.CategoryName, Description = entity.Description, CreatedUtc = entity.CreatedUtc, ModifiedUtc = entity.ModifiedUtc };
+            }
+        }
+
+        public bool UpdateCategory(CategoryEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Categories.Single(e => e.CategoryId == model.CategoryId);
+
+                entity.CategoryName = model.CategoryName;
+                entity.Description = model.Description;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() > 0;
+            }
+        }
+        public bool DeleteCategory(int categoryId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Categories.Single(e => e.CategoryId == categoryId);
+
+                ctx.Categories.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }
