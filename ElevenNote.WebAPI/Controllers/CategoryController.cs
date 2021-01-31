@@ -56,11 +56,18 @@ namespace ElevenNote.WebAPI.Controllers
 
             return Ok("The category was updated successfully.");
         }
-
-        public IHttpActionResult Delete(int id)
+        [HttpDelete]
+        [Route("api/Category/{categoryId}")]
+        public IHttpActionResult Delete([FromUri] int categoryId)
         {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var noteService = new NoteService(userId);
+
+            noteService.NullCategory(categoryId);
+
             var service = CreateCategoryService();
-            if (!service.DeleteCategory(id))
+
+            if (!service.DeleteCategory(categoryId))
                 return InternalServerError();
 
             return Ok("The category was successfully deleted.");

@@ -123,6 +123,17 @@ namespace ElevenNote.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        
+        public void NullCategory(int categoryId)
+        {            
+            using (var ctx = new ApplicationDbContext())
+            {
+                var notes = GetNotesByCategory(categoryId);
+
+                foreach (var note in notes)
+                    note.CategoryId = null;
+
+                ctx.SaveChanges();
+            }
+        }
     }
 }
