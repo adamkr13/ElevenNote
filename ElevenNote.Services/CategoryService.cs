@@ -21,6 +21,7 @@ namespace ElevenNote.Services
         {
             var entity = new Category()
             {
+                OwnerId = _userId,
                 CategoryName = model.CategoryName,
                 Description = model.Description,
                 CreatedUtc = DateTimeOffset.Now
@@ -69,7 +70,7 @@ namespace ElevenNote.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Categories.Single(e => e.CategoryId == categoryId);
+                var entity = ctx.Categories.Single(e => e.CategoryId == categoryId && e.OwnerId == _userId);
 
                 ctx.Categories.Remove(entity);
 

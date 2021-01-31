@@ -14,6 +14,8 @@ namespace ElevenNote.Data
         [Required]
         public string CategoryName { get; set; }
         [Required]
+        public Guid OwnerId { get; set; }
+        [Required]
         public string Description { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
