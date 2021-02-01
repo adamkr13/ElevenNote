@@ -66,11 +66,11 @@ namespace ElevenNote.Services
                 return ctx.SaveChanges() > 0;
             }
         }
-        public bool DeleteCategory(int categoryId)
+        public bool DeleteCategory(int Id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Categories.Single(e => e.CategoryId == categoryId && e.OwnerId == _userId);
+                var entity = ctx.Categories.Single(e => e.CategoryId == Id);
 
                 ctx.Categories.Remove(entity);
 

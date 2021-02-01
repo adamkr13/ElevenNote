@@ -81,7 +81,24 @@ namespace ElevenNote.Services
                     ctx
                         .Notes
                         .Single(e => e.NoteId == id && e.OwnerId == _userId);
-                return
+                if(entity.CategoryId == null)
+                {
+                    return
+                    new NoteDetail
+                    {
+                        NoteId = entity.NoteId,
+                        Title = entity.Title,
+                        Content = entity.Content,
+                        CategoryName = null,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
+                }
+                    
+                
+                else
+                {
+                    return
                     new NoteDetail
                     {
                         NoteId = entity.NoteId,
@@ -91,6 +108,7 @@ namespace ElevenNote.Services
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
                     };
+                }
             }
         }
 
@@ -123,16 +141,16 @@ namespace ElevenNote.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public void NullCategory(int categoryId)
+        public void NullCategory(int Id)
         {            
             using (var ctx = new ApplicationDbContext())
             {
-                var notes = GetNotesByCategory(categoryId);
+                var notes = GetNotesByCategory(Id);
 
                 foreach (var note in notes)
                     note.CategoryId = null;
 
-                ctx.SaveChanges();
+                var test = (ctx.SaveChanges() > 0);
             }
         }
     }
