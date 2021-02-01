@@ -44,6 +44,12 @@ namespace ElevenNote.Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
+            modelBuilder
+                .Entity<Category>()
+                .HasMany(e => e.Notes)
+                .WithOptional()
+                .WillCascadeOnDelete(false);
+
         }
 
     }
@@ -60,5 +66,5 @@ namespace ElevenNote.Data
         {
             HasKey(iur => iur.UserId);
         }
-    }
+    }    
 }

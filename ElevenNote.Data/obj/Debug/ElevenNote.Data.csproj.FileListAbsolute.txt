@@ -31,3 +31,4 @@ C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Data\obj\Debug\Eleve
 C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Data\obj\Debug\ElevenNote.Data.csproj.GenerateResource.cache
 C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Data\obj\Debug\ElevenNote.Data.Migrations.NulledCategoryId.resources
 C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Data\obj\Debug\ElevenNote.Data.Migrations.RestoredId.resources
+C:\AKR ElevenFiftyProjects\Blue Badge\ElevenNote\ElevenNote.Data\obj\Debug\ElevenNote.Data.Migrations.ModifiedModelBuilder.resources

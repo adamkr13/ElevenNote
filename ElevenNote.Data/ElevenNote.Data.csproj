@@ -92,6 +92,10 @@
     <Compile Include="Migrations\202101311910429_RestoredId.designer.cs">
       <DependentUpon>202101311910429_RestoredId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102011713293_ModifiedModelBuilder.cs" />
+    <Compile Include="Migrations\202102011713293_ModifiedModelBuilder.designer.cs">
+      <DependentUpon>202102011713293_ModifiedModelBuilder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101311910429_RestoredId.resx">
       <DependentUpon>202101311910429_RestoredId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102011713293_ModifiedModelBuilder.resx">
+      <DependentUpon>202102011713293_ModifiedModelBuilder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
