@@ -80,21 +80,9 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202101311831392_InitialCreate.cs" />
-    <Compile Include="Migrations\202101311831392_InitialCreate.designer.cs">
-      <DependentUpon>202101311831392_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101311857090_NulledCategoryId.cs" />
-    <Compile Include="Migrations\202101311857090_NulledCategoryId.designer.cs">
-      <DependentUpon>202101311857090_NulledCategoryId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101311910429_RestoredId.cs" />
-    <Compile Include="Migrations\202101311910429_RestoredId.designer.cs">
-      <DependentUpon>202101311910429_RestoredId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102011713293_ModifiedModelBuilder.cs" />
-    <Compile Include="Migrations\202102011713293_ModifiedModelBuilder.designer.cs">
-      <DependentUpon>202102011713293_ModifiedModelBuilder.cs</DependentUpon>
+    <Compile Include="Migrations\202102011931397_InitialMigration.cs" />
+    <Compile Include="Migrations\202102011931397_InitialMigration.designer.cs">
+      <DependentUpon>202102011931397_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
@@ -105,17 +93,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101311831392_InitialCreate.resx">
-      <DependentUpon>202101311831392_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101311857090_NulledCategoryId.resx">
-      <DependentUpon>202101311857090_NulledCategoryId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101311910429_RestoredId.resx">
-      <DependentUpon>202101311910429_RestoredId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102011713293_ModifiedModelBuilder.resx">
-      <DependentUpon>202102011713293_ModifiedModelBuilder.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102011931397_InitialMigration.resx">
+      <DependentUpon>202102011931397_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
@@ -25,7 +25,7 @@
                 c => new
                     {
                         NoteId = c.Int(nullable: false, identity: true),
-                        CategoryId = c.Int(),
+                        CategoryId = c.Int(nullable: true),
                         OwnerId = c.Guid(nullable: false),
                         Title = c.String(nullable: false),
                         Content = c.String(nullable: false),

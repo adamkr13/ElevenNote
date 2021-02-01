@@ -145,10 +145,15 @@ namespace ElevenNote.Services
         {            
             using (var ctx = new ApplicationDbContext())
             {
-                var notes = GetNotesByCategory(Id);
+                var entity = ctx.Notes.Where(e => e.CategoryId == Id);
 
-                foreach (var note in notes)
+                foreach (var note in entity)
                     note.CategoryId = null;
+
+                //var notes = GetNotesByCategory(Id);
+
+                //foreach (var note in notes)
+                //    note.CategoryId = null;
 
                 var test = (ctx.SaveChanges() > 0);
             }
