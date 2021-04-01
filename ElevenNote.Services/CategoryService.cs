@@ -38,7 +38,7 @@ namespace ElevenNote.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Categories.Select(e => new CategoryListItem
-                { CategoryId = e.CategoryId, CategoryName = e.CategoryName });
+                { CategoryId = e.CategoryId, CategoryName = e.CategoryName, CreatedUtc = e.CreatedUtc });
 
                 return query.ToArray();
             }
@@ -49,7 +49,16 @@ namespace ElevenNote.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Categories.Single(e => e.CategoryId == id);
-                return new CategoryDetail { CategoryId = entity.CategoryId, CategoryName = entity.CategoryName, Description = entity.Description, CreatedUtc = entity.CreatedUtc, ModifiedUtc = entity.ModifiedUtc };
+                return new CategoryDetail
+                {
+                    CategoryId = entity.CategoryId,
+                    CategoryName = entity.CategoryName,
+                    Description = entity.Description,
+                    CreatedUtc = entity.CreatedUtc,
+                    ModifiedUtc = entity.ModifiedUtc,
+                    Notes = entity.Notes.Select(e => new NoteListItem()
+                    { NoteId = e.NoteId, Title = e.Title, CreatedUtc = e.CreatedUtc }).ToList()
+                };
             }
         }
 
@@ -74,7 +83,7 @@ namespace ElevenNote.Services
 
                 ctx.Categories.Remove(entity);
 
-                return ctx.SaveChanges() >= 0;
+                return ctx.SaveChanges() > 0;
             }
         }        
     }
