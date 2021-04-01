@@ -48,7 +48,7 @@ namespace ElevenNote.WebAPI.Controllers
             return Ok(note);
         }
         //[HttpGet]
-        //Route[("api/Category/{CagegoryId:int}/note")]
+        //Route[("api/Category/{CategoryId:int}/note")]
         //public IHttpActionResult GetByCategory(int categoryId)
         //{
         //    NoteService noteService = CreateNoteService();

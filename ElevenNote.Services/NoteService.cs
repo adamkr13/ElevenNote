@@ -83,23 +83,7 @@ namespace ElevenNote.Services
                     ctx
                         .Notes
                         .Single(e => e.NoteId == id && e.OwnerId == _userId);
-                if (entity.CategoryId == null)
-                {
-                    return
-                    new NoteDetail
-                    {
-                        NoteId = entity.NoteId,
-                        Title = entity.Title,
-                        Content = entity.Content,
-                        CategoryName = null,
-                        CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
-                    };
-                }
 
-
-                else
-                {
                     return
                     new NoteDetail
                     {
@@ -108,10 +92,12 @@ namespace ElevenNote.Services
                         Content = entity.Content,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc,
-                        CategoryId = entity.CategoryId,
-                        Category = new CategoryListItem() { CategoryId = entity.Category.CategoryId, CategoryName = entity.Category.CategoryName }
+                        Categories = entity.Categories.Select(n=> new CategoryListItem()
+                        {
+                            CategoryId = n.CategoryId,
+                            CategoryName = n.Category.CategoryName                            
+                        }).ToList()
                     };
-                }
             }
         }
 
