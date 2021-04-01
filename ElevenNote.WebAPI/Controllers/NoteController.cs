@@ -47,14 +47,15 @@ namespace ElevenNote.WebAPI.Controllers
             var note = noteService.GetNoteById(id);
             return Ok(note);
         }
-        //[HttpGet]
-        //Route[("api/Category/{CagegoryId:int}/note")]
-        //public IHttpActionResult GetByCategory(int categoryId)
-        //{
-        //    NoteService noteService = CreateNoteService();
-        //    var notes = noteService.GetNotesByCategory(categoryId);
-        //    return Ok(notes);
-        //}
+
+        [Route("api/Note/GetByCategory/{id}")]
+        public IHttpActionResult GetByCategoryId(int id)
+        {
+            var noteService = CreateNoteService();
+            var notes = noteService.GetNotesByCategory(id);
+            return Ok(notes);
+        }
+        
 
         public IHttpActionResult Put(NoteEdit note)
         {

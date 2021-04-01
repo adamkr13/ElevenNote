@@ -67,6 +67,7 @@ namespace ElevenNote.Services
                                 new NoteListItem
                                 {
                                     NoteId = e.NoteId,
+                                    CategoryId = e.CategoryId,
                                     Title = e.Title,
                                     CreatedUtc = e.CreatedUtc
                                 });
