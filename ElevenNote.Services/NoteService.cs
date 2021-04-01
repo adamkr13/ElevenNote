@@ -31,7 +31,7 @@ namespace ElevenNote.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Notes.Add(entity);
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() == 0;
             }
         }
         public IEnumerable<NoteListItem> GetNotes()
@@ -47,14 +47,15 @@ namespace ElevenNote.Services
                                 new NoteListItem
                                 {
                                     NoteId = e.NoteId,
-                                    CategoryId = e.CategoryId,
                                     Title = e.Title,
+                                    CategoryId = e.CategoryId,
+                                    CategoryName = e.Category.CategoryName,
                                     CreatedUtc = e.CreatedUtc
                                 });
                 return query.ToArray();
             }
         }
-        public IEnumerable<NoteListItem> GetNotesByCategory(int categoryId)
+        public IEnumerable<NoteListItem> GetNotesByCategoryId(int categoryId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -68,7 +69,9 @@ namespace ElevenNote.Services
                                 {
                                     NoteId = e.NoteId,
                                     Title = e.Title,
-                                    CreatedUtc = e.CreatedUtc
+                                    CreatedUtc = e.CreatedUtc,
+                                    CategoryId = e.CategoryId,
+                                    CategoryName = e.Category.CategoryName
                                 });
                 return query.ToArray();
             }
@@ -103,10 +106,11 @@ namespace ElevenNote.Services
                     {
                         NoteId = entity.NoteId,
                         Title = entity.Title,
-                        Content = entity.Content,
-                        CategoryName = entity.Category.CategoryName,
+                        Content = entity.Content,                        
                         CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
+                        ModifiedUtc = entity.ModifiedUtc,
+                        CategoryId = entity.CategoryId,
+                        Category = new CategoryListItem() { CategoryId = entity.Category.CategoryId, CategoryName = entity.Category.CategoryName}
                     };
                 }
             }
