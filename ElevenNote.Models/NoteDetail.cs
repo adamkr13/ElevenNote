@@ -12,14 +12,13 @@ namespace ElevenNote.Models
         public int NoteId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public string CategoryName { get; set; }
+
         [Display(Name ="Created")]
         public DateTimeOffset CreatedUtc { get; set; }
+
         [Display(Name ="Modified")]
         public DateTimeOffset? ModifiedUtc { get; set; }
 
-        public int? CategoryId { get; set; }
-
-        public virtual CategoryListItem Category { get; set; }
+        public virtual List<CategoryListItem> Categories { get; set; }
     }
 }

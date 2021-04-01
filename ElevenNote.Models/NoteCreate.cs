@@ -16,10 +16,6 @@ namespace ElevenNote.Models
         public string Title { get; set; }
 
         [Required]
-        public string Content { get; set; }
-        
-        public int? CategoryId { get; set; }
-
-        public virtual Category Category { get; set; }
+        public string Content { get; set; }        
     }
 }

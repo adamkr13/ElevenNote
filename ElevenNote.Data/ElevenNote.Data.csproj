@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
+    <Compile Include="CategoryNote.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202102011931397_InitialMigration.cs" />
     <Compile Include="Migrations\202102011931397_InitialMigration.designer.cs">

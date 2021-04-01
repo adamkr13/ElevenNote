@@ -5,16 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElevenNote.Models
+namespace ElevenNote.Models.CategoryNote
 {
-    public class NoteEdit
+    public class CategoryNoteCreate
     {
-        public int NoteId { get; set; }
+        [Required]
+        public int CategoryId { get; set; }
 
         [Required]
-        public string Title { get; set; }
-        
-        [Required]
-        public string Content { get; set; }
+        public int NoteId { get; set; }
     }
 }
