@@ -30,7 +30,7 @@ namespace ElevenNote.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Notes.Add(entity);
-                return ctx.SaveChanges() == 0;
+                return ctx.SaveChanges() == 1;
             }
         }
         public IEnumerable<NoteListItem> GetNotes()
@@ -54,27 +54,27 @@ namespace ElevenNote.Services
                 return query.ToArray();
             }
         }
-        public IEnumerable<NoteListItem> GetNotesByCategoryId(int categoryId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                        .Notes
-                        .Where(e => e.OwnerId == _userId && e.CategoryId == categoryId)
-                        .Select(
-                            e =>
-                                new NoteListItem
-                                {
-                                    NoteId = e.NoteId,
-                                    Title = e.Title,
-                                    CreatedUtc = e.CreatedUtc,
-                                    CategoryId = e.CategoryId,
-                                    CategoryName = e.Category.CategoryName
-                                });
-                return query.ToArray();
-            }
-        }
+        //public IEnumerable<NoteListItem> GetNotesByCategoryId(int categoryId)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //                .Notes
+        //                .Where(e => e.OwnerId == _userId && e.CategoryId == categoryId)
+        //                .Select(
+        //                    e =>
+        //                        new NoteListItem
+        //                        {
+        //                            NoteId = e.NoteId,
+        //                            Title = e.Title,
+        //                            CreatedUtc = e.CreatedUtc,
+        //                            CategoryId = e.CategoryId,
+        //                            CategoryName = e.Category.CategoryName
+        //                        });
+        //        return query.ToArray();
+        //    }
+        //}
         public NoteDetail GetNoteById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -112,7 +112,6 @@ namespace ElevenNote.Services
 
                 entity.Title = model.Title;
                 entity.Content = model.Content;
-                entity.CategoryId = model.CategoryId;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() > 0;
@@ -130,22 +129,17 @@ namespace ElevenNote.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public void NullCategory(int Id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity = ctx.Notes.Where(e => e.CategoryId == Id);
+        //public void NullCategory(int Id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity = ctx.Notes.Where(e => e.CategoryId == Id);
 
-                foreach (var note in entity)
-                    note.CategoryId = null;
+        //        foreach (var note in entity)
+        //            note.CategoryId = null;                
 
-                //var notes = GetNotesByCategory(Id);
-
-                //foreach (var note in notes)
-                //    note.CategoryId = null;
-
-                var test = (ctx.SaveChanges() > 0);
-            }
-        }
+        //        var test = (ctx.SaveChanges() > 0);
+        //    }
+        //}
     }
 }

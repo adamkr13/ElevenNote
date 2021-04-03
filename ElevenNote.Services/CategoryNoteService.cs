@@ -34,5 +34,20 @@ namespace ElevenNote.Services
             }
         }
 
+        public bool DeleteCategoryNote(int noteId, int categoryId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.CategoryNotes.SingleOrDefault(e => e.CategoryId == categoryId && e.NoteId == noteId);
+
+                if(entity != null)
+                {
+                    ctx.CategoryNotes.Remove(entity);
+                    return ctx.SaveChanges() == 1;
+                }
+                return false;
+            }
+        }
+
     }
 }

@@ -23,6 +23,15 @@ namespace ElevenNote.WebAPI.Controllers
             return Ok($"Note {model.NoteId} was added to category {model.CategoryId}");
         }
 
+        [HttpDelete]
+        public IHttpActionResult DeleteCategoryNote([FromUri]int noteId, [FromUri] int categoryId)
+        {
+            var service = CreateService();
+            if (service.DeleteCategoryNote(noteId, categoryId))
+                return Ok();
+
+            return InternalServerError();
+        }
 
 
         private CategoryNoteService CreateService()

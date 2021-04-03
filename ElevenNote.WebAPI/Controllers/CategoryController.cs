@@ -64,7 +64,7 @@ namespace ElevenNote.WebAPI.Controllers
             var userId = Guid.Parse(User.Identity.GetUserId());
             var noteService = new NoteService(userId);
 
-            noteService.NullCategory(Id);
+            //noteService.NullCategory(Id);
 
 
 
