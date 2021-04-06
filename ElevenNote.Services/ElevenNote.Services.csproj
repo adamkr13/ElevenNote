@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryNoteService.cs" />
     <Compile Include="CategoryService.cs" />
     <Compile Include="NoteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

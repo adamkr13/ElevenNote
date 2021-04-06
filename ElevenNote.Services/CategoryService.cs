@@ -57,7 +57,7 @@ namespace ElevenNote.Services
                     CreatedUtc = entity.CreatedUtc,
                     ModifiedUtc = entity.ModifiedUtc,
                     Notes = entity.Notes.Select(e => new NoteListItem()
-                    { NoteId = e.NoteId, Title = e.Title, CreatedUtc = e.CreatedUtc }).ToList()
+                    { NoteId = e.Note.NoteId, Title = e.Note.Title, CreatedUtc = e.Note.CreatedUtc }).ToList()
                 };
             }
         }
