@@ -24,11 +24,27 @@ namespace ElevenNote.Services
                 CategoryId = model.CategoryId,
                 NoteId = model.NoteId
             };
-            
-            using(var ctx = new ApplicationDbContext())
+
+            using (var ctx = new ApplicationDbContext())
             {
                 ctx.CategoryNotes.Add(entity);
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteCategoryNote(int categoryId, int noteId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.CategoryNotes.SingleOrDefault(e => e.CategoryId == categoryId && e.NoteId == noteId);
+
+                if (entity != null)
+                {
+                    ctx.CategoryNotes.Remove(entity);
+                    return ctx.SaveChanges() == 1;
+                }
+
+                return false;
             }
         }
     }
