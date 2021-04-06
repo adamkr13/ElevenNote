@@ -31,7 +31,7 @@ namespace ElevenNote.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Notes.Add(entity);
-                return ctx.SaveChanges() == 0;
+                return ctx.SaveChanges() == 1;
             }
         }
         public IEnumerable<NoteListItem> GetNotes()
